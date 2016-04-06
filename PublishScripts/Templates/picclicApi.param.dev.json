@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "picclic"
+  },
+  "hostingPlanName": {
+    "value": "picclick_service"
+  },
+  "siteLocation": {
+    "value": "West Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "picclic"
+  },
+  "serverLocation": {
+    "value": "West Europe"
+  },
+  "administratorLogin": {
+    "value": "sauser"
+  },
+  "administratorLoginPassword": {
+    "value": "P@$$w0rd12"
+  },
+  "databaseName": {
+    "value": "picclic_db"
+  }
+}

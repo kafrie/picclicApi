@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "picclicApi", "picclicApi\picclicApi.csproj", "{AF6DEB27-A491-4A90-B726-FD396833C191}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "picclicApi.Tests", "picclicApi.Tests\picclicApi.Tests.csproj", "{7D910D16-BF8C-4B00-80DE-527796EB6005}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{2AA7AB76-BF4D-43CA-862E-5376A8DC1E5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{CDF21691-E8C1-4CF5-968B-070B6FEE83C7}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{E77ACADC-72F4-48D9-95B4-E35002554243}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\picclicApi.json = PublishScripts\Templates\picclicApi.json
+		PublishScripts\Templates\picclicApi.param.dev.json = PublishScripts\Templates\picclicApi.param.dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF6DEB27-A491-4A90-B726-FD396833C191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6DEB27-A491-4A90-B726-FD396833C191}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6DEB27-A491-4A90-B726-FD396833C191}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6DEB27-A491-4A90-B726-FD396833C191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D910D16-BF8C-4B00-80DE-527796EB6005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D910D16-BF8C-4B00-80DE-527796EB6005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D910D16-BF8C-4B00-80DE-527796EB6005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D910D16-BF8C-4B00-80DE-527796EB6005}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDF21691-E8C1-4CF5-968B-070B6FEE83C7} = {2AA7AB76-BF4D-43CA-862E-5376A8DC1E5D}
+		{E77ACADC-72F4-48D9-95B4-E35002554243} = {2AA7AB76-BF4D-43CA-862E-5376A8DC1E5D}
+	EndGlobalSection
+EndGlobal
