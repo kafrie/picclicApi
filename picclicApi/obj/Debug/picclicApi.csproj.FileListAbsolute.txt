@@ -90,3 +90,4 @@ C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.dll
 C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.pdb
 C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.Migrations.Initial.resources
 C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.csproj.GenerateResource.Cache
+C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.Migrations.DropUserName.resources
