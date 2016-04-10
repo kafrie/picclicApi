@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using picclicApi.Models;
+using picclicApi.Shared;
 
 namespace picclicApi.Controllers
 {
     public class SignUpUserModelsController : ApiController
     {
         private picclicApiContext db = new picclicApiContext();
+        private readonly HashAndVerifyPsw _pswHashing = new HashAndVerifyPsw();
 
         // GET: api/SignUpUserModels
         public IQueryable<SignUpUserModel> GetSignUpUserModels()
@@ -25,13 +27,16 @@ namespace picclicApi.Controllers
 
         // GET: api/SignUpUserModels/5
         [ResponseType(typeof(SignUpUserModel))]
-        public async Task<IHttpActionResult> GetSignUpUserModel(string id)
+        public async Task<IHttpActionResult> GetSignUpUserModel(string id, string pswToVerify)
         {
-            SignUpUserModel signUpUserModel = await db.SignUpUserModels.FindAsync(id);
+            var signUpUserModel = await db.SignUpUserModels.FindAsync(id);
+
             if (signUpUserModel == null)
             {
                 return NotFound();
             }
+
+            var verifyPsw = _pswHashing.VerifyHash(pswToVerify, signUpUserModel.Password);
 
             return Ok(signUpUserModel);
         }
@@ -80,7 +85,26 @@ namespace picclicApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.SignUpUserModels.Add(signUpUserModel);
+            try
+            {
+                var hashedPsw = _pswHashing.ComputeHash(signUpUserModel.Password);
+
+                signUpUserModel = new SignUpUserModel
+                {
+                    Name = signUpUserModel.Name,
+                    Surname = signUpUserModel.Surname,
+                    UserId = signUpUserModel.UserId,
+                    Email = signUpUserModel.Email,
+                    Password = hashedPsw
+                };
+
+                db.SignUpUserModels.Add(signUpUserModel);
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+                throw;
+            }
 
             try
             {
