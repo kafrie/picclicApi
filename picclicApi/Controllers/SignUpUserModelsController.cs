@@ -40,7 +40,12 @@ namespace picclicApi.Controllers
 
             var verifyPsw = _pswHashing.VerifyHash(pswToVerify, signUpUserModel.Password);
 
-            return Ok(signUpUserModel);
+            if (verifyPsw)
+            {
+                return Ok(signUpUserModel);
+            }
+            
+            return StatusCode(HttpStatusCode.NotAcceptable);
         }
 
         // PUT: api/SignUpUserModels/5
