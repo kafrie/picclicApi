@@ -8,3 +8,5 @@
 /packages
 
 # misc
+picclicApi/bin/picclicApi.dll.config
+picclicApi/Web.config

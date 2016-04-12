@@ -11,9 +11,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using picclicApi.Models;
 using picclicApi.Shared;
+using System.Web.Http.Cors;
 
 namespace picclicApi.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SignUpUserModelsController : ApiController
     {
         private picclicApiContext db = new picclicApiContext();
@@ -114,7 +116,7 @@ namespace picclicApi.Controllers
             {
                 if (SignUpUserModelExists(signUpUserModel.UserId))
                 {
-                    return Conflict();
+                    return StatusCode(HttpStatusCode.Conflict);
                 }
                 else
                 {
