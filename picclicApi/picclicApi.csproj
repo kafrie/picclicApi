@@ -241,8 +241,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SignInModelsController.cs" />
     <Compile Include="Controllers\SignUpUserModelsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -255,11 +255,28 @@
     <Compile Include="Migrations\201604071930533_DropUserName.Designer.cs">
       <DependentUpon>201604071930533_DropUserName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604270843117_AddSignInUserTable.cs" />
+    <Compile Include="Migrations\201604270843117_AddSignInUserTable.Designer.cs">
+      <DependentUpon>201604270843117_AddSignInUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604270852042_UpdateSignInUserTable.cs" />
+    <Compile Include="Migrations\201604270852042_UpdateSignInUserTable.Designer.cs">
+      <DependentUpon>201604270852042_UpdateSignInUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604270853271_UpdateSignInUserTable1.cs" />
+    <Compile Include="Migrations\201604270853271_UpdateSignInUserTable1.Designer.cs">
+      <DependentUpon>201604270853271_UpdateSignInUserTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604270910239_UpdateSignInUserTable2.cs" />
+    <Compile Include="Migrations\201604270910239_UpdateSignInUserTable2.Designer.cs">
+      <DependentUpon>201604270910239_UpdateSignInUserTable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\picclicApiContext.cs" />
+    <Compile Include="Models\SignInModel.cs" />
     <Compile Include="Models\SignUpUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -347,6 +364,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604071930533_DropUserName.resx">
       <DependentUpon>201604071930533_DropUserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604270843117_AddSignInUserTable.resx">
+      <DependentUpon>201604270843117_AddSignInUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604270852042_UpdateSignInUserTable.resx">
+      <DependentUpon>201604270852042_UpdateSignInUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604270853271_UpdateSignInUserTable1.resx">
+      <DependentUpon>201604270853271_UpdateSignInUserTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604270910239_UpdateSignInUserTable2.resx">
+      <DependentUpon>201604270910239_UpdateSignInUserTable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

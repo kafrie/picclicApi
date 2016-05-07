@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -29,7 +26,7 @@ namespace picclicApi.Controllers
 
         // GET: api/SignUpUserModels/5
         [ResponseType(typeof(SignUpUserModel))]
-        public async Task<IHttpActionResult> GetSignUpUserModel(string id, string pswToVerify)
+        public async Task<IHttpActionResult> GetSignUpUserModel(string id)
         {
             var signUpUserModel = await db.SignUpUserModels.FindAsync(id);
 
@@ -38,14 +35,7 @@ namespace picclicApi.Controllers
                 return NotFound();
             }
 
-            var verifyPsw = _pswHashing.VerifyHash(pswToVerify, signUpUserModel.Password);
-
-            if (verifyPsw)
-            {
-                return Ok(signUpUserModel);
-            }
-            
-            return StatusCode(HttpStatusCode.NotAcceptable);
+            return Ok(signUpUserModel);
         }
 
         // PUT: api/SignUpUserModels/5
@@ -96,16 +86,20 @@ namespace picclicApi.Controllers
             {
                 var hashedPsw = _pswHashing.ComputeHash(signUpUserModel.Password);
 
-                signUpUserModel = new SignUpUserModel
+                db.SignInModels.Add(new SignInModel
+                {
+                    UserId = signUpUserModel.UserId,
+                    Password = hashedPsw
+                });
+
+                db.SignUpUserModels.Add(new SignUpUserModel
                 {
                     Name = signUpUserModel.Name,
                     Surname = signUpUserModel.Surname,
                     UserId = signUpUserModel.UserId,
                     Email = signUpUserModel.Email,
                     Password = hashedPsw
-                };
-
-                db.SignUpUserModels.Add(signUpUserModel);
+                });
             }
             catch (Exception ex)
             {
