@@ -83,7 +83,7 @@ namespace picclicApi.Controllers
                     UserName = signUpUserModel.UserName
                 };
                 db.SignInModels.Attach(updateSignIn);
-                var updateSigninEntry = db.Entry(updateSignUp);
+                var updateSigninEntry = db.Entry(updateSignIn);
                 foreach (var value in updateSigninEntry.OriginalValues.PropertyNames)
                 {
                     updateSigninEntry.Property(value).IsModified = value != "Password";
