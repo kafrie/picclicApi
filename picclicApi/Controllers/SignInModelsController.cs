@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -16,6 +17,26 @@ namespace picclicApi.Controllers
         private picclicApiContext db = new picclicApiContext();
         private readonly HashAndVerifyPsw _pswHashing = new HashAndVerifyPsw();
 
+        // GET: api/SignInModels
+        public IQueryable<SignInModel> GetSignInModels()
+        {
+            return db.SignInModels;
+        }
+
+        // GET: api/SignInModels/5
+        [ResponseType(typeof(SignInModel))]
+        public async Task<IHttpActionResult> GetSignInModel(string userName)
+        {
+            var signInModel = await db.SignInModels.FirstOrDefaultAsync(x=>x.UserName==userName);
+
+            if (signInModel == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(signInModel);
+        }
+
         // POST: api/SignInModels
         [ResponseType(typeof(SignInModel))]
         public async Task<IHttpActionResult> PostSignInModel(SignInModel signInModel)
@@ -29,7 +50,7 @@ namespace picclicApi.Controllers
 
             try
             {
-                var user = db.SignInModels.SingleOrDefault(u => u.UserId == signInModel.UserId);
+                var user = db.SignInModels.SingleOrDefault(u => u.UserName == signInModel.UserName);
                 if (user != null)
                 {
                     var verifyPsw = _pswHashing.VerifyHash(signInModel.Password, user.Password);
@@ -49,7 +70,7 @@ namespace picclicApi.Controllers
             }
             catch (DbUpdateException)
             {
-                if (SignInModelExists(signInModel.UserId))
+                if (SignInModelExists(signInModel.UserName))
                 {
                     return Conflict();
                 }
@@ -59,7 +80,11 @@ namespace picclicApi.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = signInModel.UserId }, signInModel);
+            return CreatedAtRoute("DefaultApi", new
+            {
+                id = signInModel.UserId,
+                username = signInModel.UserName
+            }, signInModel);
         }
 
         protected override void Dispose(bool disposing)
@@ -73,7 +98,7 @@ namespace picclicApi.Controllers
 
         private bool SignInModelExists(string id)
         {
-            return db.SignInModels.Count(e => e.UserId == id) > 0;
+            return db.SignInModels.Count(e => e.UserName == id) > 0;
         }
     }
 }

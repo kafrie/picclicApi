@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -51,14 +52,46 @@ namespace picclicApi.Controllers
             {
                 return BadRequest();
             }
+            
+           
 
-            db.Entry(signUpUserModel).State = EntityState.Modified;
+            
 
             try
             {
+                var updateSignUp = new SignUpUserModel
+                {
+                    UserId = signUpUserModel.UserId,
+                    Name = signUpUserModel.Name,
+                    Surname = signUpUserModel.Surname,
+                    UserName = signUpUserModel.UserName,
+                    Email = signUpUserModel.Email
+                };
+                db.SignUpUserModels.Attach(updateSignUp);
+                var updateSignupEntry = db.Entry(updateSignUp);
+
+                foreach (var value in updateSignupEntry.OriginalValues.PropertyNames)
+                {
+                    updateSignupEntry.Property(value).IsModified = value != "Password";
+                }
+
+                await db.SaveChangesAsync();
+
+                var updateSignIn = new SignInModel
+                {
+                    UserId = signUpUserModel.UserId,
+                    UserName = signUpUserModel.UserName
+                };
+                db.SignInModels.Attach(updateSignIn);
+                var updateSigninEntry = db.Entry(updateSignUp);
+                foreach (var value in updateSigninEntry.OriginalValues.PropertyNames)
+                {
+                    updateSigninEntry.Property(value).IsModified = value != "Password";
+                }
+
                 await db.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
                 if (!SignUpUserModelExists(id))
                 {
@@ -66,6 +99,7 @@ namespace picclicApi.Controllers
                 }
                 else
                 {
+                    var t = ex.Message;
                     throw;
                 }
             }
@@ -84,11 +118,13 @@ namespace picclicApi.Controllers
 
             try
             {
+                var userId = Guid.NewGuid().ToString();
                 var hashedPsw = _pswHashing.ComputeHash(signUpUserModel.Password);
 
                 db.SignInModels.Add(new SignInModel
                 {
-                    UserId = signUpUserModel.UserId,
+                    UserId = userId,
+                    UserName = signUpUserModel.UserName,
                     Password = hashedPsw
                 });
 
@@ -96,7 +132,8 @@ namespace picclicApi.Controllers
                 {
                     Name = signUpUserModel.Name,
                     Surname = signUpUserModel.Surname,
-                    UserId = signUpUserModel.UserId,
+                    UserId = userId,
+                    UserName = signUpUserModel.UserName,
                     Email = signUpUserModel.Email,
                     Password = hashedPsw
                 });
@@ -113,7 +150,7 @@ namespace picclicApi.Controllers
             }
             catch (DbUpdateException)
             {
-                if (SignUpUserModelExists(signUpUserModel.UserId))
+                if (SignUpUserModelExists(signUpUserModel.UserName))
                 {
                     return StatusCode(HttpStatusCode.Conflict);
                 }

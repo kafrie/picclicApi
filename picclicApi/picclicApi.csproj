@@ -271,6 +271,22 @@
     <Compile Include="Migrations\201604270910239_UpdateSignInUserTable2.Designer.cs">
       <DependentUpon>201604270910239_UpdateSignInUserTable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605121941463_updateSignUpUserTableWithOldUserId.cs" />
+    <Compile Include="Migrations\201605121941463_updateSignUpUserTableWithOldUserId.Designer.cs">
+      <DependentUpon>201605121941463_updateSignUpUserTableWithOldUserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121957072_ReomoveFKOnTablesSigninup.cs" />
+    <Compile Include="Migrations\201605121957072_ReomoveFKOnTablesSigninup.Designer.cs">
+      <DependentUpon>201605121957072_ReomoveFKOnTablesSigninup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130623589_makeUserNameUniqueAddUserIDasID.cs" />
+    <Compile Include="Migrations\201605130623589_makeUserNameUniqueAddUserIDasID.Designer.cs">
+      <DependentUpon>201605130623589_makeUserNameUniqueAddUserIDasID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130644599_pswpublic.cs" />
+    <Compile Include="Migrations\201605130644599_pswpublic.Designer.cs">
+      <DependentUpon>201605130644599_pswpublic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -376,6 +392,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604270910239_UpdateSignInUserTable2.resx">
       <DependentUpon>201604270910239_UpdateSignInUserTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121941463_updateSignUpUserTableWithOldUserId.resx">
+      <DependentUpon>201605121941463_updateSignUpUserTableWithOldUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121957072_ReomoveFKOnTablesSigninup.resx">
+      <DependentUpon>201605121957072_ReomoveFKOnTablesSigninup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130623589_makeUserNameUniqueAddUserIDasID.resx">
+      <DependentUpon>201605130623589_makeUserNameUniqueAddUserIDasID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130644599_pswpublic.resx">
+      <DependentUpon>201605130644599_pswpublic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

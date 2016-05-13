@@ -98,3 +98,7 @@ C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.dll
 C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.pdb
 C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.Migrations.UpdateSignInUserTable2.resources
 C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.csprojResolveAssemblyReference.cache
+C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.Migrations.updateSignUpUserTableWithOldUserId.resources
+C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.Migrations.ReomoveFKOnTablesSigninup.resources
+C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.Migrations.makeUserNameUniqueAddUserIDasID.resources
+C:\work\github\picclicApi\picclicApi\obj\Debug\picclicApi.Migrations.pswpublic.resources

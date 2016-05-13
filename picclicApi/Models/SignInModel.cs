@@ -7,9 +7,9 @@ namespace picclicApi.Models
     {
         [Key]
         public string UserId { get; set; }
+        [Index(IsUnique = true)]
+        [StringLength(450)]
+        public string UserName { get; set; }
         public string Password { get; set; }
-
-        [ForeignKey("UserId")]
-        internal virtual SignUpUserModel SignUpUser { get; set; }
     }
 }
