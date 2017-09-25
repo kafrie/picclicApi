@@ -1,20 +1,20 @@
-#Ember getting started
+# Ember getting started
 
-##Ember Training and Learnings
+## Ember Training and Learnings
 
-###Important links:
+### Important links:
 * This page is summary of video - http://campus.codeschool.com/courses/try-ember/level/1/section/1/video/1
 * http://emberjs.com/
 * Link to Woodlands project - https://github.com/kafrie/woodland
 
-###Installing Ember:
+### Installing Ember:
 1. Install https://nodejs.org/en/download/stable/ for windows
 2. Install https://git-scm.com/downloads 
 3. Make sure to select to use the git path, if it doesnt give you the option go set the path yourself by using
 	C:\Users\{user}\AppData\Local\GitHub\PortableGit_{guid}\cmd
 4. Run `npm install -g ember-cli` in your command prompt (This will install the ember framework)
 
-###Creating New Ember ProjectL
+### Creating New Ember ProjectL
 1. In your command prompt run `path>ember new {project name}`
 ![image](https://cloud.githubusercontent.com/assets/17876815/13810352/b1a5e670-eb6f-11e5-86ff-3f18bd7fcc69.png)
 2. Via command prompt go to the project - `path>cd  projectname`
@@ -23,7 +23,7 @@
   
   ![image](https://cloud.githubusercontent.com/assets/17876815/13811555/ceb81aec-eb76-11e5-87ee-34d72ae912f3.png)
 	
-####Possible issue:
+#### Possible issue:
 _Failed to execute "git ls-remote --tags --heads git://github.com/ember-cli/ember-cli-shims.git", exit code of #128
 fatal: unable to connect to github.com_ 
 * To solve this run:
@@ -40,7 +40,7 @@ You would think the above mentioned use https instead of git would work, in some
 A must read, especially if you get weird errors after ember serve, such as `Uncaught Error: Attempting to inject an unknown injection`
 - http://emberigniter.com/update-latest-ember-data-cli/
 
-###Restoring an Ember project from Git clone
+### Restoring an Ember project from Git clone
 On occasion you might want to clone your project to a seperate machine and continue development from there (e.g. Sepperation between Office and Home).
 
 Because gitignore will exclude node_modules and the bower_components, `ember serve` will throw an error complaining about modules being missing or empty.
@@ -54,9 +54,9 @@ To get your project back to a working state run the following on `path\projectNa
 
 Now when running `ember serve` everything should be back in order.
 
-###First Overview of App
+### First Overview of App
 
-####Templates
+#### Templates
 Template will tell Ember what html to render for each page.
 
 `app/templates/application.hbs` is the default template, if index.hbs is added with something in it, the `{{outlet}}` will display what is in there (default empty).
@@ -66,7 +66,7 @@ Creating another template will not automatically display. For this we need to te
 To link to a different landing page for a user:
 `{{#link-to 'landingPage'}}landingPage{{/link-to}}` 
 
-####Router
+#### Router
 Manages the application state, will map the state into the url where user is and need to go to.
 
 app/router.js
@@ -290,7 +290,7 @@ Outcome
 ![image](https://cloud.githubusercontent.com/assets/17876815/13922421/78c7ace2-ef7c-11e5-9356-c3298802c623.png)
 
 
-###Models and Services
+### Models and Services
 To centralise the data we will create services. Services are long living objects available throughout the app (singleton). For this the data will be stored in a data repository service.
 
 `ember gemerate service <service-name>`
@@ -358,7 +358,7 @@ export default Ember.Route.extend({
 
 ```
 
-####Models
+#### Models
 Models represent the underlying (sometimes persisted), data of the application.
 
 ```javascript
@@ -526,7 +526,7 @@ name = {{model.name}}<br>
 
 ```
 
-###Actions
+### Actions
 
 What we need to do now is to hook up the submit button to have it listen for the submit event coming in. In Ember this is done through Actions.
 
@@ -622,7 +622,7 @@ Outcome of this will be the new order added to the bottom of the list of orders 
 
 ![image](https://cloud.githubusercontent.com/assets/17876815/14016849/0ae001d6-f1c3-11e5-845e-e505f0b0c92d.png)
 
-###Computed properties
+### Computed properties
 
 Computed properties  are function-calculated, cached properties. Ember ships with ~30 predefined computed property macros.
 
@@ -730,7 +730,7 @@ Outcome
 
 ![image](https://cloud.githubusercontent.com/assets/17876815/14019603/eacb761c-f1d3-11e5-9122-4b7a100763c9.png)
 
-###Properties and Components
+### Properties and Components
 
 The percentages need to be implemented and styled based on values (above 50% bold).
 
